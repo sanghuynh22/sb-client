@@ -29,7 +29,7 @@ export const createWatch = ({ title, user, file }) => {
 
 		dispatch(createWatchRequest());
 		return axios
-			.post("http://localhost:3000/api/watch", formData)
+			.post(`${process.env.REACT_APP_API_URL}/watch`, formData)
 			.then((response) => {
 				console.log("formData : ", formData);
 

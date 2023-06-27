@@ -22,7 +22,7 @@ export const getAllWatch = () => {
 	return (dispatch) => {
 		dispatch(getAllWatchRequest());
 		return axios
-			.get("http://localhost:3000/api/watch")
+			.get(`${process.env.REACT_APP_API_URL}/watch`)
 			.then((response) => {
 				const watches = response.data;
 				dispatch(getAllWatchSuccess(watches));
