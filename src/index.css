@@ -297,8 +297,8 @@ footer {
 .login_card_container {
 	width: 100%;
 	display: grid;
-	grid-template-columns: repeat(1fr, 150px);
-	grid-row: 250px;
+	grid-template-columns: repeat(auto-fill, 150px);
+	grid-auto-rows: 250px;
 	justify-content: center;
 	gap: 8px;
 	overflow-y: auto;
