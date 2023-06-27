@@ -54,7 +54,7 @@ const Watch = () => {
 							</div>
 							<div className="watch_video">
 								<video
-									src={`http://localhost:3000/uploads/${watch.file}`}
+									src={`${process.env.REACT_APP_SERVER_URL}/uploads/${watch.file}`}
 									type="video/mp4"
 									controls
 								></video>
