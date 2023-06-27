@@ -2,6 +2,7 @@ import React, { useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { IoMdClose } from "react-icons/io";
 import { createWatch } from "../actions/watch/createWatch";
+import { getAllWatch } from "../actions/watch/getAllWatch";
 
 const WatchCreate = ({ setIsCreate }) => {
 	const dispatch = useDispatch();
@@ -33,7 +34,10 @@ const WatchCreate = ({ setIsCreate }) => {
 		} else {
 			dispatch(
 				createWatch({ title: title, user: currentUser._id, file: file })
-			).then((res) => alert(`Đã tạo thành công Watch với video ${file.name}`));
+			).then((res) => {
+				dispatch(getAllWatch());
+				alert(`Đã tạo thành công Watch với video ${file.name}`);
+			});
 		}
 	};
 	return (
