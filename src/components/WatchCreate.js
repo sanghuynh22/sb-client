@@ -6,10 +6,9 @@ import { getAllWatch } from "../actions/watch/getAllWatch";
 
 const WatchCreate = ({ setIsCreate }) => {
 	const dispatch = useDispatch();
-	const isCreating = true;
 	const fileRef = useRef();
 	const { currentUser } = useSelector((state) => state.user.auth);
-	// const { isCreating } = useSelector((state) => state.watch.createWatch);
+	const { isCreating } = useSelector((state) => state.watch.createWatch);
 	const [title, setTitle] = useState("");
 	const [fileReview, setFileReview] = useState(null);
 	const [file, setFile] = useState(null);
