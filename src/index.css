@@ -2751,7 +2751,6 @@ input[type="number"] {
 /* LOADING */
 .login_loading {
 	margin: 20px auto;
-	text-align: center;
 	display: inline-block;
 	position: relative;
 	width: 80px;
