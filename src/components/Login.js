@@ -22,7 +22,9 @@ const Login = () => {
 	const { user } = useSelector((state) => state.user.loginUser);
 	const { currentUser } = useSelector((state) => state.user.auth);
 	useEffect(() => {
-		dispatch(fetchAllUsers()).then(() => {});
+		dispatch(fetchAllUsers()).then(() => {
+			console.log("all login users: ", users);
+		});
 	}, []);
 	const handleClickCard = async (user) => {
 		dispatch(authLogin(user)).then((user) => {
@@ -46,16 +48,17 @@ const Login = () => {
 			<div className="login_container_left">
 				<p className="login_title">Sangbook</p>
 				<p className="login_title_p">Đăng nhập nhanh:</p>
-				<div className="login_card_container">
-					{isLoading ? (
-						<div class="login_loading">
-							<div></div>
-							<div></div>
-							<div></div>
-							<div></div>
-						</div>
-					) : (
-						users?.map((u) => (
+
+				{isLoading ? (
+					<div class="login_loading">
+						<div></div>
+						<div></div>
+						<div></div>
+						<div></div>
+					</div>
+				) : (
+					<div className="login_card_container">
+						{users?.map((u) => (
 							<div
 								className="login_card"
 								key={u._id}
@@ -67,9 +70,9 @@ const Login = () => {
 								/>
 								<p className="login_card_p">{u.username}</p>
 							</div>
-						))
-					)}
-				</div>
+						))}
+					</div>
+				)}
 			</div>
 			<div className="login_container_right">
 				<div className="login_bar_container">
