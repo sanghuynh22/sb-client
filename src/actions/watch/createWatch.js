@@ -23,16 +23,14 @@ export const createWatch = ({ title, user, file }) => {
 		const formData = new FormData();
 		formData.append("title", title);
 		formData.append("user", user);
-		formData.append("likes", 120);
-		formData.append("view", 500);
+		formData.append("likes", 28);
+		formData.append("view", 280);
 		formData.append("file", file);
 
 		dispatch(createWatchRequest());
 		return axios
 			.post(`${process.env.REACT_APP_API_URL}/watch`, formData)
 			.then((response) => {
-				console.log("formData : ", formData);
-
 				const watch = response.data;
 				dispatch(createWatchSuccess(watch));
 				return Promise.resolve(watch);
