@@ -1009,6 +1009,7 @@ footer {
 	padding: 0 15px;
 }
 .comment_create_input {
+	width: 100%;
 	outline: none;
 	border: none;
 	background-color: transparent;
