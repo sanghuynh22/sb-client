@@ -33,15 +33,21 @@ import { hideStatus } from "../actions/status/hideStatus";
 import { deleteStatus } from "../actions/status/deleteStatus";
 import { useParams } from "react-router-dom";
 const Status = ({ userProfile }) => {
+	const [showSkeleton, setShowSkeleton] = useState(true);
 	const dispatch = useDispatch();
 	let { userId } = useParams();
 	const [content, setContent] = useState("");
+	const { isCreating } = useSelector((state) => state.status.createComment);
 	const { statuses, isGet } = useSelector((state) => state.status.getAllStatus);
 	const { currentUser } = useSelector((state) => state.user.auth);
 	useEffect(() => {
-		dispatch(getAllStatus());
+		dispatch(getAllStatus()).then(() => {
+			setShowSkeleton(false);
+		});
 	}, []);
-
+	// useEffect(() => {
+	// 	setShowSkeleton(isGet);
+	// }, []);
 	//comments
 	const handleEnter = async (e, statusId) => {
 		let user = await currentUser._id;
@@ -82,7 +88,7 @@ const Status = ({ userProfile }) => {
 	};
 	return (
 		<div className="home_statuses">
-			{!isGet ? (
+			{!showSkeleton ? (
 				!userId ? (
 					statuses
 						?.filter((status) => !currentUser?.statusHide.includes(status._id))
@@ -183,31 +189,41 @@ const Status = ({ userProfile }) => {
 												className="comment_create_avatar"
 											/>
 											<div className="comment_create_option">
-												<div className="comment_create_bar">
-													<input
-														placeholder="Viết bình luận..."
-														className="comment_create_input"
-														onKeyDown={(e) => handleEnter(e, status?._id)}
-														value={content}
-														onChange={(e) => setContent(e.target.value)}
-													/>
-												</div>
-												<div className="comment_create_icons">
-													{content ? (
-														<IoMdSend
-															className="comment_create_icon"
-															style={{
-																color: "#2375c9",
-																transition: "all .2s ease-in",
-															}}
-															onClick={() =>
-																handleClickCreateComment(status?._id)
-															}
-														/>
-													) : (
-														<IoMdSend className="comment_create_icon" />
-													)}
-												</div>
+												{isCreating ? (
+													<div class="loading_comment">
+														<div></div>
+														<div></div>
+														<div></div>
+													</div>
+												) : (
+													<>
+														<div className="comment_create_bar">
+															<input
+																placeholder="Viết bình luận..."
+																className="comment_create_input"
+																onKeyDown={(e) => handleEnter(e, status?._id)}
+																value={content}
+																onChange={(e) => setContent(e.target.value)}
+															/>
+														</div>
+														<div className="comment_create_icons">
+															{content ? (
+																<IoMdSend
+																	className="comment_create_icon"
+																	style={{
+																		color: "#2375c9",
+																		transition: "all .2s ease-in",
+																	}}
+																	onClick={() =>
+																		handleClickCreateComment(status?._id)
+																	}
+																/>
+															) : (
+																<IoMdSend className="comment_create_icon" />
+															)}
+														</div>
+													</>
+												)}
 											</div>
 										</div>
 										{status?.comments.map((comment) => (
