@@ -1440,9 +1440,11 @@ footer {
 }
 .watch_video {
 	width: 100%;
+	height: 460px;
 }
 video {
 	width: 100%;
+	height: 100%;
 }
 .watch_emotions {
 	display: flex;
