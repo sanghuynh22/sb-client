@@ -26,7 +26,7 @@ const MarketItem = () => {
 	};
 	return (
 		<>
-			{false ? (
+			{!isGet ? (
 				items
 					?.filter((item) => item._id === id)
 					?.map((item) => (

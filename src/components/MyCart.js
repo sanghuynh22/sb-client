@@ -34,8 +34,8 @@ const MyCart = () => {
 			<div className="myCart_content">
 				{cart
 					? boughtItems
-							.filter((item) => item.status === 0)
-							.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
+							?.filter((item) => item.status === 0)
+							?.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
 							?.map((item) => (
 								<div className="myCart_option" key={item._id}>
 									<img src={item.item.image} className="myCart_option_img" />
@@ -45,7 +45,7 @@ const MyCart = () => {
 												{item.item.title}
 											</p>
 											<p className="myCart_option_info_left_p">
-												Giá: {item.price}
+												Giá: {item.price.toLocaleString("de-De")}đ
 											</p>
 											<p className="myCart_option_info_left_p">
 												Số lượng: {item.amount}
@@ -53,7 +53,8 @@ const MyCart = () => {
 										</div>
 										<div className="myCart_option_info_right">
 											<p className="myCart_option_info_right_p">
-												Tổng tiền : {item.amount * item.price}
+												Tổng tiền :{" "}
+												{(item.amount * item.price).toLocaleString("de-De")}đ
 											</p>
 											<p className="myCart_option_info_right_status">
 												{item.status === 0 && "đang giao hàng"}
@@ -74,7 +75,7 @@ const MyCart = () => {
 												{item.item.title}
 											</p>
 											<p className="myCart_option_info_left_p">
-												Giá: {item.price}
+												Giá: {item.price.toLocaleString("de-De")}đ
 											</p>
 											<p className="myCart_option_info_left_p">
 												Số lượng: {item.amount}
@@ -82,13 +83,14 @@ const MyCart = () => {
 										</div>
 										<div className="myCart_option_info_right">
 											<p className="myCart_option_info_right_p">
-												Tổng tiền : {item.amount * item.price}
+												Tổng tiền :{" "}
+												{(item.amount * item.price).toLocaleString("de-De")}đ
 											</p>
 											<p
 												className="myCart_option_info_right_status"
 												style={{ color: "#d91a09" }}
 											>
-												{item.status === 0 && "đã giao hàng"}
+												đã giao hàng
 											</p>
 										</div>
 									</div>
