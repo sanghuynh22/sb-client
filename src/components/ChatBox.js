@@ -63,6 +63,7 @@ const ChatBox = ({ setChat, friend, setSelectedFriend }) => {
 	}, [sortedMessages, currentUser._id, messages]);
 
 	const handleSendMessage = async () => {
+		setText("");
 		if (text.trim() !== "") {
 			await socket.emit("sendMessage", {
 				userId: currentUser._id,
@@ -81,11 +82,13 @@ const ChatBox = ({ setChat, friend, setSelectedFriend }) => {
 		}
 	};
 	const handleClickClose = () => {
+		setText("");
 		setChat(false);
 		setSelectedFriend(null);
 	};
 	const handleKeyDown = (e) => {
 		if (e.key === "Enter") {
+			setText("");
 			handleSendMessage();
 		}
 	};
