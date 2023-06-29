@@ -7,7 +7,7 @@ export const getSocket = () => {
 		// Nếu socket chưa khởi tạo, hãy khởi tạo nó và lưu vào biến global
 		socket = io(process.env.REACT_APP_SERVER_URL, {
 			transports: ["websocket"],
-			upgrade: false,
+			upgrade: true,
 		});
 	}
 
