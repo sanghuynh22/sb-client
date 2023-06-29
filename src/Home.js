@@ -56,6 +56,12 @@ const Home = () => {
 		// socket.on("disconnectSucces", () => {
 		// 	dispatch(fetchAllUsers());
 		// });
+		return () => {
+			if (socket.readyState === 1) {
+				// <-- This is important
+				socket.close();
+			}
+		};
 	}, [socket]);
 	socket.on("loginSuccess", () => {
 		dispatch(fetchAllUsers());
