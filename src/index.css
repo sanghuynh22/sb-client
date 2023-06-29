@@ -2030,6 +2030,7 @@ input[type="number"] {
 	left: 10px;
 	display: flex;
 	gap: 5px;
+	z-index: 5;
 }
 .market-item_right_left {
 	flex: 1.7;
