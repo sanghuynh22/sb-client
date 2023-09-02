@@ -1,8 +1,8 @@
 import moment from "moment";
 
 export const formatDate = (date) => {
-	const createdAt = moment(date);
-
+	let createdAt = moment(date);
+	if (!date) createdAt = moment(new Date()).subtract(1, "hour");
 	if (createdAt.diff(moment(), "days") > -7) {
 		return createdAt.fromNow();
 	} else if (createdAt.year() === moment().year()) {
