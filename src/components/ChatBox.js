@@ -85,7 +85,6 @@ const ChatBox = ({ setChat, friend, setSelectedFriend, isOnline }) => {
 	const renderMessages = useMemo(() => {
 		return sortedMessages.map((message, index) => {
 			console.log("messages::::", message);
-			console;
 			const isFromCurrentUser = message.from == currentUser._id;
 			const messageClass = isFromCurrentUser
 				? "chatbox_content_message_right"

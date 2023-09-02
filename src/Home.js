@@ -44,7 +44,6 @@ const Home = () => {
 		console.log("socketID::", socket.id);
 		socket.on("getOnlineUsers", async (data) => {
 			setUserOnline(Object.keys(data));
-			console.log("usersoneline::", userOnline);
 		});
 		// socket.on("loginSuccess", () => {
 		// 	dispatch(fetchAllUsers());
