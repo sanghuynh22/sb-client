@@ -2,6 +2,7 @@ import { combineReducers } from "redux";
 import authReducer from "./user/auth";
 import fetchUserReducer from "./user/fetchUser";
 import fetchAllUsersReducer from "./user/fetchAllUsers";
+import fetchMessagesReducer from "./user/fetchMessages";
 import registerUserReducer from "./user/registerUser";
 import loginUserReducer from "./user/loginUser";
 import updateUserReducer from "./user/updateUser";
@@ -29,6 +30,7 @@ const rootReducer = combineReducers({
 		auth: authReducer,
 		fetchUser: fetchUserReducer,
 		fetchAllUsers: fetchAllUsersReducer,
+		fetchMessages: fetchMessagesReducer,
 		registerUser: registerUserReducer,
 		loginUser: loginUserReducer,
 		updateUser: updateUserReducer,
