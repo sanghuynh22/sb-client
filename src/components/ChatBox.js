@@ -46,7 +46,6 @@ const ChatBox = ({ setChat, friend, setSelectedFriend, isOnline }) => {
 			fetchMessages({ userId: currentUser._id, receiverId: friend._id })
 		).then((data) => {
 			setMessages([...data]);
-			console.log("data:::", ...data);
 		});
 	}, []);
 	useEffect(() => {
@@ -68,7 +67,6 @@ const ChatBox = ({ setChat, friend, setSelectedFriend, isOnline }) => {
 		socket.on("getMessages", (data) => {
 			if (data.to != currentUser._id) return;
 			setMessages((prev) => [...prev, data]);
-			console.log("getMessage:::", data);
 		});
 
 		return () => {
@@ -84,7 +82,6 @@ const ChatBox = ({ setChat, friend, setSelectedFriend, isOnline }) => {
 
 	const renderMessages = useMemo(() => {
 		return sortedMessages.map((message, index) => {
-			console.log("messages::::", message);
 			const isFromCurrentUser = message.from == currentUser._id;
 			const messageClass = isFromCurrentUser
 				? "chatbox_content_message_right"
