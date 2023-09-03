@@ -56,11 +56,7 @@ const ChatBox = ({ setChat, friend, setSelectedFriend, isOnline }) => {
 			userId: currentUser._id,
 			recipientId: friend._id,
 		});
-
-		socket.on("messageHistory", (data) => {
-			setMessages([...data, ...messages]);
-		});
-	}, [friend]);
+	}, [friend, socket]);
 
 	useEffect(() => {
 		if (socket === null) return;
