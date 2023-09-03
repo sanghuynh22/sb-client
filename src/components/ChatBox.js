@@ -78,7 +78,7 @@ const ChatBox = ({ setChat, friend, setSelectedFriend, isOnline }) => {
 		return messages?.sort(
 			(a, b) => new Date(a.createdAt) - new Date(b.createdAt)
 		);
-	}, [messages]);
+	}, [messages, socket]);
 
 	const renderMessages = useMemo(() => {
 		return sortedMessages.map((message, index) => {
